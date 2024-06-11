@@ -1,0 +1,15 @@
+mode: set
+github.com/susilo001/golang-advance/session-3-unit-test/main.go:10.13,21.2 5 0
+github.com/susilo001/golang-advance/session-3-unit-test/middleware/auth.go:10.39,11.30 1 1
+github.com/susilo001/golang-advance/session-3-unit-test/middleware/auth.go:11.30,15.18 2 1
+github.com/susilo001/golang-advance/session-3-unit-test/middleware/auth.go:15.18,19.4 3 1
+github.com/susilo001/golang-advance/session-3-unit-test/middleware/auth.go:22.3,22.29 1 1
+github.com/susilo001/golang-advance/session-3-unit-test/middleware/auth.go:22.29,26.4 3 1
+github.com/susilo001/golang-advance/session-3-unit-test/middleware/auth.go:29.3,29.11 1 1
+github.com/susilo001/golang-advance/session-3-unit-test/handler/handler.go:5.31,7.2 1 1
+github.com/susilo001/golang-advance/session-3-unit-test/handler/handler.go:9.34,13.2 1 1
+github.com/susilo001/golang-advance/session-3-unit-test/handler/handler.go:15.34,19.48 2 1
+github.com/susilo001/golang-advance/session-3-unit-test/handler/handler.go:19.48,21.3 1 1
+github.com/susilo001/golang-advance/session-3-unit-test/handler/handler.go:21.8,23.3 1 1
+github.com/susilo001/golang-advance/session-3-unit-test/router/route.go:9.33,15.2 4 1
+github.com/susilo001/golang-advance/session-3-unit-test/router/route.go:15.2,17.3 1 1
