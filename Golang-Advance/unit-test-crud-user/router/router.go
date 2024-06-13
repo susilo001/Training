@@ -2,8 +2,8 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/susilo001/golang-advance/crud/handler"
-	"github.com/susilo001/golang-advance/crud/middleware"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/handler"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/middleware"
 )
 
 // SetupRouter menginisialisasi dan mengatur rute untuk aplikasi

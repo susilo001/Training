@@ -3,7 +3,7 @@ package service
 import (
 	"fmt"
 
-	"github.com/susilo001/golang-advance/crud/entity"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/entity"
 )
 
 // IUserService mendefinisikan interface untuk layanan pengguna

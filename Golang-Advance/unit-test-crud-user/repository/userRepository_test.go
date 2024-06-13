@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/susilo001/golang-advance/crud/entity"
-	"github.com/susilo001/golang-advance/crud/repository"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/entity"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/repository"
 )
 
 func TestUserRepository(t *testing.T) {

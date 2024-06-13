@@ -8,7 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
-	"github.com/susilo001/golang-advance/crud/router"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/router"
 )
 
 func TestPublicRoutes(t *testing.T) {

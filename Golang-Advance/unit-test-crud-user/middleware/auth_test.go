@@ -5,10 +5,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/stretchr/testify/require"
-	"github.com/susilo001/golang-advance/crud/middleware"
-
 	"github.com/gin-gonic/gin"
+	"github.com/stretchr/testify/require"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/middleware"
 )
 
 func TestAuthMiddleware(t *testing.T) {

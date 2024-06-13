@@ -4,12 +4,12 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/susilo001/golang-advance/crud/entity"
-	"github.com/susilo001/golang-advance/crud/handler"
-	"github.com/susilo001/golang-advance/crud/middleware"
-	"github.com/susilo001/golang-advance/crud/repository"
-	"github.com/susilo001/golang-advance/crud/router"
-	"github.com/susilo001/golang-advance/crud/service"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/entity"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/handler"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/middleware"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/repository"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/router"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/service"
 )
 
 func main() {

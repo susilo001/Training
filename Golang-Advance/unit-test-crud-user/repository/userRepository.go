@@ -3,8 +3,8 @@ package repository
 import (
 	"time"
 
-	"github.com/susilo001/golang-advance/crud/entity"
-	"github.com/susilo001/golang-advance/crud/service"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/entity"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/service"
 )
 
 type UserRepository struct {

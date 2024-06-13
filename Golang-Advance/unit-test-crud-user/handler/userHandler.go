@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/susilo001/golang-advance/crud/entity"
-	"github.com/susilo001/golang-advance/crud/service"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/entity"
+	"github.com/susilo001/golang-advance/unit-test-crud-user/service"
 )
 
 // IUserHandler mendefinisikan interface untuk handler user
