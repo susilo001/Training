@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/susilo001/golang-advance/session-6-db-pgx/entity"
+	"github.com/susilo001/golang-advance/session-7-gorm/entity"
 )
 
 // IUserService mendefinisikan interface untuk layanan pengguna
@@ -35,48 +35,52 @@ func NewUserService(userRepo IUserRepository) IUserService {
 	return &userService{userRepo: userRepo}
 }
 
-// CreateUser membuat pengguna baru dengan menggunakan repository
+// CreateUser membuat pengguna baru
 func (s *userService) CreateUser(ctx context.Context, user *entity.User) (entity.User, error) {
+	// Memanggil CreateUser dari repository untuk membuat pengguna baru
 	createdUser, err := s.userRepo.CreateUser(ctx, user)
 	if err != nil {
-		return entity.User{}, fmt.Errorf("gagal membuat user!!", err)
+		return entity.User{}, fmt.Errorf("gagal membuat pengguna: %v", err)
 	}
 	return createdUser, nil
 }
 
-// GetUserByID mendapatkan pengguna berdasarkan ID, mengembalikan error jika tidak ditemukan
+// GetUserByID mendapatkan pengguna berdasarkan ID
 func (s *userService) GetUserByID(ctx context.Context, id int) (entity.User, error) {
+	// Memanggil GetUserByID dari repository untuk mendapatkan pengguna berdasarkan ID
 	user, err := s.userRepo.GetUserByID(ctx, id)
 	if err != nil {
-		return entity.User{}, fmt.Errorf("user not found")
+		return entity.User{}, fmt.Errorf("gagal mendapatkan pengguna berdasarkan ID: %v", err)
 	}
 	return user, nil
 }
 
-// UpdateUser memperbarui pengguna berdasarkan ID, mengembalikan error jika tidak ditemukan
+// UpdateUser memperbarui data pengguna
 func (s *userService) UpdateUser(ctx context.Context, id int, user entity.User) (entity.User, error) {
+	// Memanggil UpdateUser dari repository untuk memperbarui data pengguna
 	updatedUser, err := s.userRepo.UpdateUser(ctx, id, user)
 	if err != nil {
-		return entity.User{}, fmt.Errorf("user not found")
+		return entity.User{}, fmt.Errorf("gagal memperbarui pengguna: %v", err)
 	}
 	return updatedUser, nil
 }
 
-// DeleteUser menghapus pengguna berdasarkan ID, mengembalikan error jika tidak ditemukan
+// DeleteUser menghapus pengguna berdasarkan ID
 func (s *userService) DeleteUser(ctx context.Context, id int) error {
+	// Memanggil DeleteUser dari repository untuk menghapus pengguna berdasarkan ID
 	err := s.userRepo.DeleteUser(ctx, id)
 	if err != nil {
-		return fmt.Errorf("user not found")
+		return fmt.Errorf("gagal menghapus pengguna: %v", err)
 	}
-
 	return nil
 }
 
-// GetAllUsers mengembalikan semua pengguna yang ada di repository
+// GetAllUsers mendapatkan semua pengguna
 func (s *userService) GetAllUsers(ctx context.Context) ([]entity.User, error) {
+	// Memanggil GetAllUsers dari repository untuk mendapatkan semua pengguna
 	users, err := s.userRepo.GetAllUsers(ctx)
 	if err != nil {
-		return []entity.User{}, fmt.Errorf("users not found")
+		return nil, fmt.Errorf("gagal mendapatkan semua pengguna: %v", err)
 	}
 	return users, nil
 }

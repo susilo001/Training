@@ -5,9 +5,9 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/susilo001/golang-advance/session-6-db-pgx/entity"
-	"github.com/susilo001/golang-advance/session-6-db-pgx/service"
-	"github.com/susilo001/golang-advance/session-6-db-pgx/utility"
+	"github.com/susilo001/golang-advance/session-7-gorm/entity"
+	"github.com/susilo001/golang-advance/session-7-gorm/service"
+	"github.com/susilo001/golang-advance/session-7-gorm/utility"
 )
 
 // IUserHandler mendefinisikan interface untuk handler user

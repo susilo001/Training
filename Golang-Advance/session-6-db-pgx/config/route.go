@@ -7,7 +7,7 @@ import (
 	"github.com/susilo001/golang-advance/session-6-db-pgx/entity"
 	"github.com/susilo001/golang-advance/session-6-db-pgx/handler"
 	"github.com/susilo001/golang-advance/session-6-db-pgx/middleware"
-	"github.com/susilo001/golang-advance/session-6-db-pgx/repository"
+	slice "github.com/susilo001/golang-advance/session-6-db-pgx/repository/slice"
 	"github.com/susilo001/golang-advance/session-6-db-pgx/router"
 	"github.com/susilo001/golang-advance/session-6-db-pgx/service"
 )
@@ -20,7 +20,7 @@ func InitRoute() {
 	r.Use(middleware.AuthMiddleware())
 
 	var mockUserDBInSlice []entity.User
-	userRepo := repository.NewUserRepository(mockUserDBInSlice)
+	userRepo := slice.NewUserRepository(mockUserDBInSlice)
 	userService := service.NewUserService(userRepo)
 	userHandler := handler.NewUserHandler(userService)
 
