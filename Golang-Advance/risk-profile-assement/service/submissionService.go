@@ -70,7 +70,3 @@ func (s *submissionService) GetSubmissionByID(ctx context.Context, id int) (enti
 	}
 	return submission, nil
 }
-
-func CheckUserSubmittedAnswer() {
-
-}

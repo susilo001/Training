@@ -1,4 +1,4 @@
-package postgres_gorm
+package repository
 
 import (
 	"context"
@@ -10,7 +10,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// GormDBIface defines an interface for GORM DB methods used in the repository
 type GormDBIface interface {
 	WithContext(ctx context.Context) *gorm.DB
 	Create(value interface{}) *gorm.DB
@@ -49,14 +48,12 @@ func (r *userRepository) GetUserByID(ctx context.Context, id int) (entity.User, 
 }
 
 func (r *userRepository) UpdateUser(ctx context.Context, id int, user entity.User) (entity.User, error) {
-	// Menemukan pengguna yang akan diperbarui
 	var existingUser entity.User
 	if err := r.db.WithContext(ctx).Select("id", "name", "email", "password", "created_at", "updated_at").First(&existingUser, id).Error; err != nil {
 		log.Printf("Error finding user to update: %v\n", err)
 		return entity.User{}, err
 	}
 
-	// Memperbarui informasi pengguna
 	existingUser.Name = user.Name
 	existingUser.Email = user.Email
 	if err := r.db.WithContext(ctx).Save(&existingUser).Error; err != nil {
@@ -76,7 +73,7 @@ func (r *userRepository) DeleteUser(ctx context.Context, id int) error {
 
 func (r *userRepository) GetAllUsers(ctx context.Context) ([]entity.User, error) {
 	var users []entity.User
-	if err := r.db.WithContext(ctx).Select("id", "name", "email", "password", "created_at", "updated_at").Find(&users).Error; err != nil {
+	if err := r.db.WithContext(ctx).Select("id", "name", "email", "created_at", "updated_at").Find(&users).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return users, nil
 		}
