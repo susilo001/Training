@@ -8,7 +8,7 @@ type Question struct {
 
 type Option struct {
 	Answer string
-	Weight int64
+	Weight int
 }
 
 var Questions = []Question{
