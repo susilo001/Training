@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/susilo001/golang-advance/risk-profile-assement/entity"
 	"github.com/susilo001/golang-advance/risk-profile-assement/service"
+	"github.com/susilo001/golang-advance/risk-profile-assement/utility"
 )
 
 // ISubmissionHandler defines the interface for submission handlers
@@ -34,7 +35,9 @@ func NewSubmissionHandler(submissionService service.ISubmissionService) ISubmiss
 func (h *SubmissionHandler) CreateSubmission(c *gin.Context) {
 	var submission entity.Submission
 	if err := c.ShouldBindJSON(&submission); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		errMsg := err.Error()
+		errMsg = utility.ConvertMandatoryFieldErrorMessage(errMsg)
+		c.JSON(http.StatusBadRequest, gin.H{"error": errMsg})
 		return
 	}
 
@@ -57,7 +60,9 @@ func (h *SubmissionHandler) UpdateSubmission(c *gin.Context) {
 
 	var submission entity.Submission
 	if err := c.ShouldBindJSON(&submission); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		errMsg := err.Error()
+		errMsg = utility.ConvertMandatoryFieldErrorMessage(errMsg)
+		c.JSON(http.StatusBadRequest, gin.H{"error": errMsg})
 		return
 	}
 	submission.ID = id

@@ -7,7 +7,6 @@ import (
 	"github.com/susilo001/golang-advance/risk-profile-assement/entity"
 )
 
-// ISubmissionService defines the interface for submission services
 type ISubmissionService interface {
 	CreateSubmission(ctx context.Context, submission *entity.Submission) (entity.Submission, error)
 	UpdateSubmission(ctx context.Context, id int, submission *entity.Submission) (entity.Submission, error)
@@ -16,7 +15,6 @@ type ISubmissionService interface {
 	GetSubmissionByID(ctx context.Context, id int) (entity.Submission, error)
 }
 
-// ISubmissionRepository defines the interface for submission repository
 type ISubmissionRepository interface {
 	CreateSubmission(ctx context.Context, submission *entity.Submission) (entity.Submission, error)
 	UpdateSubmission(ctx context.Context, id int, submission *entity.Submission) (entity.Submission, error)
@@ -25,17 +23,14 @@ type ISubmissionRepository interface {
 	GetSubmissionByID(ctx context.Context, id int) (entity.Submission, error)
 }
 
-// submissionService is the implementation of ISubmissionService using ISubmissionRepository
 type submissionService struct {
 	submissionRepo ISubmissionRepository
 }
 
-// NewSubmissionService creates a new instance of submissionService
 func NewSubmissionService(submissionRepo ISubmissionRepository) ISubmissionService {
 	return &submissionService{submissionRepo: submissionRepo}
 }
 
-// CreateSubmission creates a new submission
 func (s *submissionService) CreateSubmission(ctx context.Context, submission *entity.Submission) (entity.Submission, error) {
 	createdSubmission, err := s.submissionRepo.CreateSubmission(ctx, submission)
 	if err != nil {
@@ -44,7 +39,6 @@ func (s *submissionService) CreateSubmission(ctx context.Context, submission *en
 	return createdSubmission, nil
 }
 
-// UpdateSubmission updates an existing submission
 func (s *submissionService) UpdateSubmission(ctx context.Context, id int, submission *entity.Submission) (entity.Submission, error) {
 	updatedSubmission, err := s.submissionRepo.UpdateSubmission(ctx, id, submission)
 	if err != nil {
@@ -53,7 +47,6 @@ func (s *submissionService) UpdateSubmission(ctx context.Context, id int, submis
 	return updatedSubmission, nil
 }
 
-// DeleteSubmission deletes a submission by ID
 func (s *submissionService) DeleteSubmission(ctx context.Context, id int) error {
 	err := s.submissionRepo.DeleteSubmission(ctx, id)
 	if err != nil {
@@ -62,7 +55,6 @@ func (s *submissionService) DeleteSubmission(ctx context.Context, id int) error 
 	return nil
 }
 
-// GetAllSubmissions retrieves all submissions
 func (s *submissionService) GetAllSubmissions(ctx context.Context) ([]entity.Submission, error) {
 	submissions, err := s.submissionRepo.GetAllSubmissions(ctx)
 	if err != nil {
@@ -71,7 +63,6 @@ func (s *submissionService) GetAllSubmissions(ctx context.Context) ([]entity.Sub
 	return submissions, nil
 }
 
-// GetSubmissionByID retrieves a submission by ID
 func (s *submissionService) GetSubmissionByID(ctx context.Context, id int) (entity.Submission, error) {
 	submission, err := s.submissionRepo.GetSubmissionByID(ctx, id)
 	if err != nil {

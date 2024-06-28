@@ -2,7 +2,7 @@ package utility
 
 import "strings"
 
-func ConvertUserMandatoryFieldErrorMessage(oldErrMsg string) string {
+func ConvertMandatoryFieldErrorMessage(oldErrMsg string) string {
 	switch {
 	case strings.Contains(oldErrMsg, "'Name' Failed on the 'required' tag"):
 		return "Field Name is Required!"

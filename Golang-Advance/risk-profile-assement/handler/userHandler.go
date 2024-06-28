@@ -36,7 +36,7 @@ func (h *UserHandler) CreateUser(c *gin.Context) {
 	var user entity.User
 	if err := c.ShouldBindJSON(&user); err != nil {
 		errMsg := err.Error()
-		errMsg = utility.ConvertUserMandatoryFieldErrorMessage(errMsg)
+		errMsg = utility.ConvertMandatoryFieldErrorMessage(errMsg)
 		c.JSON(http.StatusBadRequest, gin.H{"error": errMsg})
 		return
 	}
@@ -78,7 +78,7 @@ func (h *UserHandler) UpdateUser(c *gin.Context) {
 	var user entity.User
 	if err := c.ShouldBindJSON(&user); err != nil {
 		errMsg := err.Error()
-		errMsg = utility.ConvertUserMandatoryFieldErrorMessage(errMsg)
+		errMsg = utility.ConvertMandatoryFieldErrorMessage(errMsg)
 		c.JSON(http.StatusBadRequest, gin.H{"error": errMsg})
 		return
 	}
