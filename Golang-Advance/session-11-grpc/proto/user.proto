@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "../proto";
+
+// User message definition
+message User {
+    int64 id = 1;
+    string name = 2;
+    string email = 3;
+    string phone = 4;
+}
+
+// Response message for getting all users
+message GetUsersResponse {
+    repeated User data = 1;
+    string err = 2;
+}
+
+// Request message for getting a specific user by ID
+message GetUserRequest {
+    int64 id = 1;
+}
+
+// Response message for getting a specific user by ID
+message GetUserResponse {
+    User data = 1;
+    string err = 2;
+}
+
+// Request message for adding a new user
+message CreateUserRequest {
+    User user = 1;
+}
+
+// Response message for adding a new user
+message CreateUserResponse {
+    User data = 1;
+    string err = 2;
+}
+
+// Request message for updating an existing user
+message UpdateUserRequest {
+    User data = 1;
+}
+
+// Response message for updating an existing user
+message UpdateUserResponse {
+    User data = 1;
+    string err = 2;
+}
+
+// Request message for deleting a user by ID
+message DeleteUserRequest {
+    int64 id = 1;
+}
+
+// Response message for deleting a user by ID
+message DeleteUserResponse {
+    int64 id = 1;
+    string err = 2;
+}
+
+// User service definition
+service UserService {
+    rpc GetAllUsers(GetUsersResponse) returns (GetUsersResponse) {}
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+}
