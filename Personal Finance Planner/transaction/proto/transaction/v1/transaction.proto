@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package proto.transaction.v1;
+
+option go_package = "github.com/susilo001/personal-finance-planner/transaction/proto/transaction/v1;transaction";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service TransactionService {
+  rpc CreateRecord(CreateRecordRequest) returns (RecordResponse);
+  rpc GetRecord(GetRecordRequest) returns (RecordResponse);
+  rpc DeleteRecord(DeleteRecordRequest) returns (RecordResponse);
+  rpc ListRecordsByWallet(ListRecordsByWalletRequest) returns (ListRecordsResponse);
+  rpc ListRecordsByTime(ListRecordsByTimeRequest) returns (ListRecordsResponse);
+  rpc GetCashFlow(GetCashFlowRequest) returns (CashFlowResponse);
+  rpc GetExpenseRecapByCategory(GetExpenseRecapByCategoryRequest) returns (ExpenseRecapResponse);
+  rpc GetLastRecords(GetLastRecordsRequest) returns (ListRecordsResponse);
+}
+
+message Record {
+  int64 id = 1;
+  int64 wallet_id = 2;
+  string category = 3;
+  string type = 4; // income/expense
+  float amount = 5;
+  string created_at = 6;
+}
+
+message CreateRecordRequest {
+  int64 wallet_id = 1;
+  string category = 2;
+  string type = 3; // income/expense
+  float amount = 4;
+}
+
+message GetRecordRequest {
+  int64 id = 1;
+}
+
+message DeleteRecordRequest {
+  int64 id = 1;
+}
+
+message RecordResponse {
+  Record record = 1;
+}
+
+message ListRecordsByWalletRequest {
+  int64 wallet_id = 1;
+}
+
+message ListRecordsByTimeRequest {
+  string start_time = 1;
+  string end_time = 2;
+}
+
+message ListRecordsResponse {
+  repeated Record records = 1;
+}
+
+message GetCashFlowRequest {
+  string start_time = 1;
+  string end_time = 2;
+}
+
+message CashFlowResponse {
+  float total_income = 1;
+  float total_expense = 2;
+}
+
+message GetExpenseRecapByCategoryRequest {
+  string start_time = 1;
+  string end_time = 2;
+}
+
+message ExpenseRecapResponse {
+  map<string, float> expense_by_category = 1;
+}
+
+message GetLastRecordsRequest {
+  int32 limit = 1; // default to 10
+}
